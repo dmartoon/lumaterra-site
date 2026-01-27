@@ -29,8 +29,6 @@
 
       --radius:18px;
       --max:980px;
-
-      --ctaBg: rgba(31,27,22,.86);
     }
 
     *{box-sizing:border-box}
@@ -42,7 +40,13 @@
       color:var(--text);
     }
 
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 44px;}
+    /* Add bottom space so the floating CTA doesn't cover content */
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:28px 18px 110px; /* <- extra bottom padding for CTA */
+    }
+
     .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px;}
     .brand{display:flex; flex-direction:column; line-height:1.1}
     .brand b{font-size:17px; letter-spacing:.2px}
@@ -58,8 +62,6 @@
       overflow:hidden;
       box-shadow:0 14px 40px rgba(0,0,0,.45);
     }
-    /* Allow sticky CTA to work reliably */
-    .cardInfo{ overflow:visible; }
 
     .media{
       aspect-ratio: 4/5;
@@ -115,20 +117,6 @@
     .bullets li{ margin: 0 0 12px; }
     .bullets li:last-child{ margin-bottom: 0; }
 
-    /* Sticky CTA that stays visible while scrolling, but remains part of the page */
-    .ctaBox{
-      margin-top:14px;
-      padding-top:14px;
-      position: sticky;
-      bottom: 14px;
-
-      background: var(--ctaBg);
-      border-top:1px solid rgba(243,238,226,.14);
-      border-radius: 14px;
-      padding: 12px;
-      backdrop-filter: blur(8px);
-    }
-
     .btn{
       appearance:none; border:0; cursor:pointer;
       padding:13px 14px; border-radius:14px;
@@ -136,6 +124,27 @@
       background:var(--btn); color:var(--btnText);
       text-decoration:none; display:flex; align-items:center; justify-content:center;
       width:100%;
+      /* Minimal + smooth */
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+      transform: translateZ(0);
+      will-change: transform;
+      transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+    }
+    .btn:active{ transform: scale(.99); }
+
+    /* Floating CTA: always visible, smooth, minimal */
+    .floatingCta{
+      position:fixed;
+      left:0; right:0;
+      bottom:16px;
+      padding:0 18px;
+      z-index:50;
+      pointer-events:none; /* lets page scroll naturally */
+    }
+    .floatingCta .btnWrap{
+      max-width:var(--max);
+      margin:0 auto;
+      pointer-events:auto; /* re-enable click */
     }
 
     .footer{
@@ -152,7 +161,7 @@
     <div class="topbar">
       <div class="brand">
         <b>Lumaterra</b>
-        <span>Handmade concrete + glass lighting</span>
+        <span>Handmade concrete + glass block lighting</span>
       </div>
     </div>
 
@@ -163,7 +172,7 @@
         </div>
       </div>
 
-      <div class="card cardInfo">
+      <div class="card">
         <div class="content">
           <h1>Concrete &amp; Glass Lamp</h1>
           <p class="sub">Minimal form, warm glow. Handmade.</p>
@@ -179,22 +188,24 @@
             <li>Hand-cast concrete base with clean, modern lines. Each cast is unique.</li>
             <li>Great on a desk, shelf, bedside table, and on the floor</li>
           </ul>
-
-          <div class="ctaBox">
-            <a class="btn"
-               href="https://www.etsy.com/listing/4366760755/handmade-concrete-glass-block-lamp"
-               rel="nofollow noopener noreferrer"
-               referrerpolicy="no-referrer">
-              Buy on Etsy
-            </a>
-          </div>
-
         </div>
       </div>
     </div>
 
     <div class="footer">
       © <span id="y"></span> Lumaterra
+    </div>
+  </div>
+
+  <!-- Always-visible CTA -->
+  <div class="floatingCta" aria-hidden="false">
+    <div class="btnWrap">
+      <a class="btn"
+         href="https://www.etsy.com/listing/4366760755/handmade-concrete-glass-block-lamp"
+         rel="nofollow noopener noreferrer"
+         referrerpolicy="no-referrer">
+        Buy on Etsy
+      </a>
     </div>
   </div>
 
