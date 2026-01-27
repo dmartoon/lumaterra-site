@@ -29,6 +29,8 @@
 
       --radius:18px;
       --max:980px;
+
+      --ctaBg: rgba(31,27,22,.86);
     }
 
     *{box-sizing:border-box}
@@ -56,6 +58,8 @@
       overflow:hidden;
       box-shadow:0 14px 40px rgba(0,0,0,.45);
     }
+    /* Allow sticky CTA to work reliably */
+    .cardInfo{ overflow:visible; }
 
     .media{
       aspect-ratio: 4/5;
@@ -66,7 +70,6 @@
 
     .content{padding:18px;}
 
-    /* Smaller title so it’s more likely to fit one line */
     h1{
       margin:0 0 8px;
       font-size:22px;
@@ -85,7 +88,6 @@
       line-height:1.55;
     }
 
-    /* More compact pills + encourage single-line fit */
     .badges{
       display:flex;
       flex-wrap:wrap;
@@ -109,11 +111,22 @@
       font-size:13px;
       line-height:1.65;
     }
+    /* More space between bullet points */
+    .bullets li{ margin: 0 0 12px; }
+    .bullets li:last-child{ margin-bottom: 0; }
 
+    /* Sticky CTA that stays visible while scrolling, but remains part of the page */
     .ctaBox{
       margin-top:14px;
-      border-top:1px solid rgba(243,238,226,.12);
       padding-top:14px;
+      position: sticky;
+      bottom: 14px;
+
+      background: var(--ctaBg);
+      border-top:1px solid rgba(243,238,226,.14);
+      border-radius: 14px;
+      padding: 12px;
+      backdrop-filter: blur(8px);
     }
 
     .btn{
@@ -150,12 +163,10 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card cardInfo">
         <div class="content">
           <h1>Concrete &amp; Glass Lamp</h1>
-          <p class="sub">
-            Minimal form, warm glow. Handmade.
-          </p>
+          <p class="sub">Minimal form, warm glow. Handmade.</p>
 
           <div class="badges">
             <div class="badge">Free shipping</div>
@@ -171,9 +182,9 @@
 
           <div class="ctaBox">
             <a class="btn"
-              href="https://www.etsy.com/listing/4366760755/handmade-concrete-glass-block-lamp"
-              rel="nofollow noopener noreferrer"
-              referrerpolicy="no-referrer">
+               href="https://www.etsy.com/listing/4366760755/handmade-concrete-glass-block-lamp"
+               rel="nofollow noopener noreferrer"
+               referrerpolicy="no-referrer">
               Buy on Etsy
             </a>
           </div>
