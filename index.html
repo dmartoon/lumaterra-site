@@ -76,14 +76,33 @@
       border-top:1px solid rgba(255,255,255,.10);
       padding-top:14px;
     }
+
+    .ctaRow{display:flex; flex-direction:column; gap:10px;}
+
     .btn{
-      appearance:none; border:0; cursor:pointer;
-      padding:13px 14px; border-radius:14px;
-      font-weight:800; font-size:14px;
-      background:var(--btn); color:var(--btnText);
-      text-decoration:none; display:flex; align-items:center; justify-content:center;
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      padding:13px 14px;
+      border-radius:14px;
+      font-weight:800;
+      font-size:14px;
+      background:var(--btn);
+      color:var(--btnText);
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       width:100%;
     }
+
+    .btnSecondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid var(--border);
+      font-weight:700;
+    }
+
     .fine{margin-top:10px; font-size:12px; color:var(--muted2); line-height:1.45}
 
     /* Mobile sticky CTA */
@@ -139,13 +158,23 @@
           </ul>
 
           <div class="ctaBox">
-            <a class="btn"
-              href="https://www.etsy.com/listing/4366760755/handmade-concrete-glass-block-lamp?utm_source=instagram&utm_medium=paid_social&utm_campaign=lumaterra_shop"
-              rel="nofollow">
-              Buy on Etsy
-            </a>
+            <div class="ctaRow">
+              <!-- Primary: tries to open the Etsy app, falls back to web listing -->
+              <button type="button" class="btn" onclick="openEtsyApp()">
+                Open in Etsy app
+              </button>
+
+              <!-- Secondary: direct web link (useful if deep links are blocked) -->
+              <a class="btn btnSecondary"
+                 href="https://www.etsy.com/listing/4366760755/handmade-concrete-glass-block-lamp"
+                 target="_blank" rel="noopener noreferrer nofollow">
+                Continue on Etsy (web)
+              </a>
+            </div>
+
             <div class="fine">
-              You’ll complete payment + shipping on Etsy’s secure checkout.
+              If the Etsy app is installed, this should open directly to the listing.
+              Otherwise, it will continue to Etsy on the web.
             </div>
           </div>
 
@@ -158,17 +187,28 @@
     </div>
   </div>
 
-  <!-- Sticky CTA on mobile -->
+  <!-- Sticky CTA on mobile (uses same app-open + fallback behavior) -->
   <div class="sticky">
-    <a class="btn"
-      href="https://www.etsy.com/listing/4366760755/handmade-concrete-glass-block-lamp?utm_source=instagram&utm_medium=paid_social&utm_campaign=lumaterra_shop"
-      rel="nofollow">
-      Buy on Etsy
-    </a>
+    <button type="button" class="btn" onclick="openEtsyApp()">
+      Open in Etsy app
+    </button>
   </div>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    function openEtsyApp() {
+      const webUrl = "https://www.etsy.com/listing/4366760755/handmade-concrete-glass-block-lamp";
+      const deepLink = "etsy://listing/4366760755";
+
+      const start = Date.now();
+      window.location.href = deepLink;
+
+      // If the app doesn't open (not installed / blocked), fall back to the web listing
+      setTimeout(() => {
+        if (Date.now() - start < 1700) window.location.href = webUrl;
+      }, 900);
+    }
   </script>
 </body>
 </html>
