@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lumaterra — Handmade Concrete & Glass Lamp</title>
+  <meta name="description" content="Handmade concrete + glass block lamp. Built to order. Warm, minimalist light." />
+  <meta name="theme-color" content="#0b1220" />
+
+  <!-- Optional: Open Graph for nicer link previews -->
+  <meta property="og:title" content="Lumaterra — Handmade Concrete & Glass Lamp" />
+  <meta property="og:description" content="Handmade concrete + glass block lamp. Built to order. Warm, minimalist light." />
+  <meta property="og:type" content="website" />
+  <!-- If you add /og.jpg to your repo, uncomment:
+  <meta property="og:image" content="https://lumaterra.shop/og.jpg" />
+  -->
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.14);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.55);
+      --btn:#ffffff;
+      --btnText:#0b1220;
+      --radius:18px;
+      --max:980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(90,160,255,.20), transparent 55%),
+                  radial-gradient(900px 600px at 95% 10%, rgba(40,220,180,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 44px;}
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px;}
+    .brand{display:flex; flex-direction:column; line-height:1.1}
+    .brand b{font-size:18px; letter-spacing:.2px}
+    .brand span{font-size:12px; color:var(--muted2)}
+    .pill{padding:8px 10px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted); background:rgba(255,255,255,.04)}
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width:860px){ .hero{grid-template-columns:1fr;} }
+    .card{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:0 14px 40px rgba(0,0,0,.35);
+    }
+    .media{
+      aspect-ratio: 4/3;
+      background:rgba(255,255,255,.04);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .media img{width:100%; height:100%; object-fit:cover; display:block;}
+    .content{padding:18px;}
+    h1{margin:0 0 8px; font-size:28px; letter-spacing:.2px}
+    .sub{color:var(--muted); margin:0 0 14px; font-size:14px; line-height:1.45}
+    .bullets{margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.55}
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .btn{
+      appearance:none; border:0; cursor:pointer;
+      padding:12px 14px; border-radius:12px;
+      font-weight:700; font-size:14px;
+      background:var(--btn); color:var(--btnText);
+      text-decoration:none; display:inline-flex; align-items:center; justify-content:center;
+      min-width:170px;
+    }
+    .btnSecondary{
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      border:1px solid var(--border);
+      font-weight:600;
+      min-width:170px;
+    }
+    .fine{margin-top:10px; font-size:12px; color:var(--muted2); line-height:1.45}
+    .grid{
+      margin-top:16px;
+      display:grid; gap:12px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width:860px){ .grid{grid-template-columns:repeat(2,1fr);} }
+    @media (max-width:520px){ .grid{grid-template-columns:1fr;} }
+    .thumb{aspect-ratio: 1/1; border-radius:14px; overflow:hidden; border:1px solid var(--border); background:rgba(255,255,255,.04)}
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+    .faq{margin-top:16px; display:grid; gap:12px; grid-template-columns:1fr 1fr;}
+    @media (max-width:860px){ .faq{grid-template-columns:1fr;} }
+    .q{padding:14px 14px; border-radius:16px; border:1px solid var(--border); background:rgba(255,255,255,.04)}
+    .q b{display:block; margin-bottom:6px; font-size:13px}
+    .q span{color:var(--muted); font-size:13px; line-height:1.45}
+    .footer{margin-top:18px; color:var(--muted2); font-size:12px; text-align:center}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <b>Lumaterra</b>
+        <span>Handmade concrete + glass lighting</span>
+      </div>
+      <div class="pill">Checkout via Etsy</div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <div class="media">
+          <!-- Put your best photo here -->
+          <img src="hero.jpg" alt="Lumaterra lamp" />
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="content">
+          <h1>Handmade Concrete & Glass Block Lamp</h1>
+          <p class="sub">
+            Minimal, warm light. Hand-cast base + glass block. Built in small batches.
+          </p>
+
+          <ul class="bullets">
+            <li>Clean, modern glow for desk / shelf / bedside</li>
+            <li>Handmade: each piece has slight natural variation</li>
+            <li>Ships safely packed — gift-ready presentation</li>
+          </ul>
+
+          <div class="ctaRow">
+            <a class="btn" target="_blank" rel="noopener noreferrer"
+               href="PASTE_YOUR_ETSY_LISTING_URL_HERE?utm_source=instagram&utm_medium=paid_social&utm_campaign=lumaterra_shop">
+              Buy on Etsy
+            </a>
+
+            <!-- Optional: a second button for more info / your IG -->
+            <a class="btn btnSecondary" target="_blank" rel="noopener noreferrer"
+               href="https://instagram.com/PASTE_YOUR_HANDLE">
+              View on Instagram
+            </a>
+          </div>
+
+          <div class="fine">
+            You’ll complete checkout on Etsy (secure payment + shipping).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="thumb"><img src="1.jpg" alt="Lamp photo 1"></div>
+      <div class="thumb"><img src="2.jpg" alt="Lamp photo 2"></div>
+      <div class="thumb"><img src="3.jpg" alt="Lamp photo 3"></div>
+      <div class="thumb"><img src="4.jpg" alt="Lamp photo 4"></div>
+      <div class="thumb"><img src="5.jpg" alt="Lamp photo 5"></div>
+      <div class="thumb"><img src="6.jpg" alt="Lamp photo 6"></div>
+    </div>
+
+    <div class="faq">
+      <div class="q"><b>Processing time</b><span>Built to order. See the Etsy listing for current lead times.</span></div>
+      <div class="q"><b>Shipping</b><span>Tracked shipping. Carefully packed to protect the glass block.</span></div>
+      <div class="q"><b>Materials</b><span>Hand-cast concrete base + glass block. Variations are normal.</span></div>
+      <div class="q"><b>Returns</b><span>Please refer to the Etsy listing for return policy and details.</span></div>
+    </div>
+
+    <div class="footer">
+      © <span id="y"></span> Lumaterra. Handmade in small batches.
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
