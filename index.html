@@ -22,14 +22,14 @@
   <style>
     :root{
       /* Earthy palette */
-      --bg:#1f1b16;                 /* deep earth */
+      --bg:#1f1b16;                  /* deep earth */
       --cardBg:rgba(255,255,255,.06);
       --border:rgba(243,238,226,.16); /* warm border */
       --text:rgba(243,238,226,.94);   /* warm off-white */
       --muted:rgba(243,238,226,.74);
       --muted2:rgba(243,238,226,.56);
 
-      --btn:#f3eee2;               /* parchment */
+      --btn:#f3eee2;                 /* parchment */
       --btnText:#1f1b16;
 
       --radius:18px;
@@ -40,8 +40,8 @@
 
     body{
       margin:0;
-      /* Classic serif / Times-like */
-      font-family: "Times New Roman", Times, Georgia, serif;
+      /* Typewriter-style */
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       background: var(--bg);
       color:var(--text);
     }
@@ -50,7 +50,7 @@
     .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px;}
     .brand{display:flex; flex-direction:column; line-height:1.1}
     .brand b{font-size:18px; letter-spacing:.2px}
-    .brand span{font-size:12px; color:var(--muted2); font-family: Georgia, "Times New Roman", Times, serif;}
+    .brand span{font-size:12px; color:var(--muted2)}
 
     .hero{display:grid; grid-template-columns: 1.15fr .85fr; gap:16px; align-items:stretch;}
     @media (max-width:860px){ .hero{grid-template-columns:1fr;} }
@@ -74,9 +74,9 @@
 
     h1{
       margin:0 0 8px;
-      font-size:30px;
+      font-size:28px;
       letter-spacing:.2px;
-      font-weight:700;
+      font-weight:800;
     }
 
     .sub{
@@ -84,7 +84,6 @@
       margin:0 0 14px;
       font-size:14px;
       line-height:1.55;
-      font-family: Georgia, "Times New Roman", Times, serif;
     }
 
     .badges{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px;}
@@ -95,7 +94,6 @@
       font-size:12px;
       color:var(--muted);
       background:rgba(255,255,255,.04);
-      font-family: Georgia, "Times New Roman", Times, serif;
     }
 
     .bullets{
@@ -104,7 +102,6 @@
       color:var(--muted);
       font-size:14px;
       line-height:1.65;
-      font-family: Georgia, "Times New Roman", Times, serif;
     }
 
     .ctaBox{
@@ -116,11 +113,10 @@
     .btn{
       appearance:none; border:0; cursor:pointer;
       padding:13px 14px; border-radius:14px;
-      font-weight:700; font-size:14px;
+      font-weight:800; font-size:14px;
       background:var(--btn); color:var(--btnText);
       text-decoration:none; display:flex; align-items:center; justify-content:center;
       width:100%;
-      font-family: Georgia, "Times New Roman", Times, serif;
     }
 
     .fine{
@@ -128,7 +124,6 @@
       font-size:12px;
       color:var(--muted2);
       line-height:1.55;
-      font-family: Georgia, "Times New Roman", Times, serif;
     }
 
     .footer{
@@ -136,7 +131,6 @@
       color:var(--muted2);
       font-size:12px;
       text-align:center;
-      font-family: Georgia, "Times New Roman", Times, serif;
     }
   </style>
 </head>
@@ -173,7 +167,7 @@
           <ul class="bullets">
             <li>Glass block diffuser for a soft, architectural glow</li>
             <li>Hand-cast concrete base with clean, modern lines. Each cast is unique.</li>
-            <li>Great on a desk, shelf, bedside table — and on the floor</li>
+            <li>Great on a desk, shelf, bedside table, and on the floor</li>
           </ul>
 
           <div class="ctaBox">
