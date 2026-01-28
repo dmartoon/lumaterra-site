@@ -31,10 +31,6 @@
       --max:980px;
 
       --ctaBar:#17130f;
-
-      /* Carousel controls */
-      --ctrlBg: rgba(0,0,0,.28);
-      --ctrlBorder: rgba(243,238,226,.18);
     }
 
     *{box-sizing:border-box}
@@ -64,7 +60,6 @@
     .brand,
     .brandRight{ line-height:1.1; }
 
-    /* Both set to 20px */
     .brand b,
     .brandRight b{
       font-size:20px;
@@ -104,32 +99,26 @@
     }
     .carousel img.is-active{opacity:1;}
 
-    /* Minimal arrows */
+    /* Minimal arrows: no circles */
     .carArrow{
       position:absolute;
       top:50%;
       transform:translateY(-50%);
-      width:34px;
-      height:34px;
-      border-radius:999px;
-      border:1px solid var(--ctrlBorder);
-      background:var(--ctrlBg);
-      color:var(--text);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      border:0;
+      background:transparent;
+      color:rgba(243,238,226,.92);
       cursor:pointer;
       user-select:none;
+      padding:8px;
       line-height:1;
-      font-size:18px;
-      padding:0;
+      font-size:28px;   /* bigger */
+      font-weight:700;  /* thicker */
+      text-shadow:0 6px 18px rgba(0,0,0,.55);
     }
-    .carArrow.left{ left:10px; }
-    .carArrow.right{ right:10px; }
+    .carArrow.left{ left:6px; }
+    .carArrow.right{ right:6px; }
 
-    .carArrow:active{ opacity:.9; }
-
-    /* better on touch */
+    .carArrow:active{ opacity:.85; }
     @media (hover:hover){
       .carArrow{ opacity:.9; }
       .carArrow:hover{ opacity:1; }
@@ -137,10 +126,9 @@
 
     .content{padding:18px;}
 
-    /* Title updated + -1px size */
     h1{
       margin:0 0 8px;
-      font-size:21px; /* was 22px */
+      font-size:21px;
       letter-spacing:.15px;
       font-weight:800;
       line-height:1.2;
@@ -247,9 +235,9 @@
           </div>
 
           <ul class="bullets">
-            <li>Glass block diffuser for a soft, architectural glow</li>
+            <li>Glass block diffuser for a soft, architectural glow.</li>
             <li>Hand-cast concrete base with clean, modern lines. Each cast is unique.</li>
-            <li>Great on a desk, shelf, bedside table, and on the floor</li>
+            <li>Great on a desk, shelf, bedside table, and on the floor.</li>
           </ul>
         </div>
       </div>
