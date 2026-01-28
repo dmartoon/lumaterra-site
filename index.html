@@ -56,13 +56,19 @@
       gap:12px;
       margin-bottom:16px;
     }
-    .brand{line-height:1.1}
-    .brand b{font-size:17px; letter-spacing:.2px}
-    .tagRight{
-      font-size:12px;
+
+    .brand,
+    .brandRight{
+      line-height:1.1;
+    }
+
+    /* Same font/weight/size for both */
+    .brand b,
+    .brandRight b{
+      font-size:17px;
       letter-spacing:.2px;
-      color:var(--muted2);
-      text-align:right;
+      font-weight:800;
+      color:var(--text);
       white-space:nowrap;
     }
 
@@ -179,7 +185,7 @@
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><b>Lumaterra</b></div>
-      <div class="tagRight">Blocklight</div>
+      <div class="brandRight"><b>Blocklight</b></div>
     </div>
 
     <div class="hero">
