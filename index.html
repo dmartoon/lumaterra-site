@@ -32,7 +32,7 @@
 
       --ctaBar:#17130f;
 
-      /* keep in sync with .wrap bottom padding */
+      /* keep in sync with mobile fixed CTA height */
       --ctaReserve:120px;
     }
 
@@ -46,24 +46,26 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* Mobile: reserve space for fixed CTA */
     .wrap{
       max-width:var(--max);
       margin:0 auto;
       padding:28px 18px var(--ctaReserve);
     }
 
-    /* Desktop-only: center the whole layout vertically to reduce dead space */
+    /* Desktop-only: center vertically and remove extra bottom reserve */
     @media (min-width:861px){
       .wrap{
-        min-height: calc(100vh - var(--ctaReserve));
-        min-height: calc(100dvh - var(--ctaReserve));
+        padding-bottom:28px; /* no fixed CTA on desktop */
+        min-height: 100vh;
+        min-height: 100dvh;
         display:flex;
         flex-direction:column;
         justify-content:center;
       }
     }
 
-    /* Desktop-only: slightly widen max width to reduce side dead space */
+    /* Desktop-only: slightly wider max width on big screens */
     @media (min-width:1100px){
       :root{ --max: 1180px; }
     }
@@ -118,7 +120,6 @@
     }
     .carousel img.is-active{opacity:1;}
 
-    /* Minimal arrows: no circles */
     .carArrow{
       position:absolute;
       top:50%;
@@ -199,6 +200,7 @@
       box-shadow:0 8px 22px rgba(0,0,0,.28);
     }
 
+    /* Mobile fixed CTA bar (shown only on <= 860px) */
     .ctaBar{
       position:fixed;
       left:0; right:0;
@@ -211,6 +213,18 @@
     .ctaBar .btnWrap{
       max-width:var(--max);
       margin:0 auto;
+    }
+    @media (min-width:861px){
+      .ctaBar{ display:none; }
+    }
+
+    /* Desktop CTA: placed under the blocks */
+    .ctaBelow{
+      display:none;
+      margin-top:16px;
+    }
+    @media (min-width:861px){
+      .ctaBelow{ display:block; }
     }
 
     .footer{
@@ -261,11 +275,22 @@
       </div>
     </div>
 
+    <!-- Desktop-only CTA directly below the photo/text block -->
+    <div class="ctaBelow">
+      <a class="btn"
+         href="https://www.etsy.com/listing/4366760755/handmade-concrete-glass-block-lamp"
+         rel="nofollow noopener noreferrer"
+         referrerpolicy="no-referrer">
+        Buy on Etsy
+      </a>
+    </div>
+
     <div class="footer">
       © <span id="y"></span> Lumaterra
     </div>
   </div>
 
+  <!-- Mobile-only fixed CTA bar -->
   <div class="ctaBar">
     <div class="btnWrap">
       <a class="btn"
