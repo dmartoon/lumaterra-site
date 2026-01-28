@@ -29,6 +29,9 @@
 
       --radius:18px;
       --max:980px;
+
+      /* Solid bar color behind CTA */
+      --ctaBar:#17130f; /* slightly darker than bg */
     }
 
     *{box-sizing:border-box}
@@ -41,11 +44,11 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Add bottom space so the floating CTA doesn't cover content */
+    /* Add bottom space so the fixed CTA bar doesn't cover content */
     .wrap{
       max-width:var(--max);
       margin:0 auto;
-      padding:28px 18px 110px;
+      padding:28px 18px 120px; /* <- space for CTA bar */
     }
 
     .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px;}
@@ -117,7 +120,6 @@
     .bullets li{ margin: 0 0 12px; }
     .bullets li:last-child{ margin-bottom: 0; }
 
-    /* Button: no animation/scale/shadow changes (more stable) */
     .btn{
       appearance:none; border:0; cursor:pointer;
       padding:13px 14px; border-radius:14px;
@@ -128,19 +130,19 @@
       box-shadow:0 8px 22px rgba(0,0,0,.28);
     }
 
-    /* Floating CTA: always visible, minimal (no motion effects) */
-    .floatingCta{
+    /* Solid fixed bar behind CTA (no see-through) */
+    .ctaBar{
       position:fixed;
       left:0; right:0;
-      bottom: calc(16px + env(safe-area-inset-bottom));
-      padding:0 18px;
+      bottom:0;
       z-index:50;
-      pointer-events:none;
+      background:var(--ctaBar);
+      border-top:1px solid rgba(243,238,226,.12);
+      padding:14px 18px calc(14px + env(safe-area-inset-bottom));
     }
-    .floatingCta .btnWrap{
+    .ctaBar .btnWrap{
       max-width:var(--max);
       margin:0 auto;
-      pointer-events:auto;
     }
 
     .footer{
@@ -193,8 +195,8 @@
     </div>
   </div>
 
-  <!-- Always-visible CTA -->
-  <div class="floatingCta">
+  <!-- Solid CTA bar -->
+  <div class="ctaBar">
     <div class="btnWrap">
       <a class="btn"
          href="https://www.etsy.com/listing/4366760755/handmade-concrete-glass-block-lamp"
