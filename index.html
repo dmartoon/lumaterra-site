@@ -31,6 +31,9 @@
       --max:980px;
 
       --ctaBar:#17130f;
+
+      /* keep in sync with .wrap bottom padding */
+      --ctaReserve:120px;
     }
 
     *{box-sizing:border-box}
@@ -43,26 +46,26 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Desktop: vertically center the whole layout to reduce dead space.
-       Mobile stays unchanged (media query). */
-    @media (min-width: 900px){
-      body{
-        min-height:100vh;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-      }
-      .wrap{
-        margin:0; /* prevent auto margins fighting flex centering */
-        padding-top:22px; /* slightly tighter on desktop */
-      }
-    }
-
     .wrap{
       max-width:var(--max);
       margin:0 auto;
-      padding:28px 18px 120px;
-      width:100%;
+      padding:28px 18px var(--ctaReserve);
+    }
+
+    /* Desktop-only: center the whole layout vertically to reduce dead space */
+    @media (min-width:861px){
+      .wrap{
+        min-height: calc(100vh - var(--ctaReserve));
+        min-height: calc(100dvh - var(--ctaReserve));
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+      }
+    }
+
+    /* Desktop-only: slightly widen max width to reduce side dead space */
+    @media (min-width:1100px){
+      :root{ --max: 1180px; }
     }
 
     .topbar{
