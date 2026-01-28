@@ -31,6 +31,10 @@
       --max:980px;
 
       --ctaBar:#17130f;
+
+      /* Carousel controls */
+      --ctrlBg: rgba(0,0,0,.28);
+      --ctrlBorder: rgba(243,238,226,.18);
     }
 
     *{box-sizing:border-box}
@@ -58,14 +62,12 @@
     }
 
     .brand,
-    .brandRight{
-      line-height:1.1;
-    }
+    .brandRight{ line-height:1.1; }
 
-    /* Same font/weight/size for both */
+    /* Both set to 20px */
     .brand b,
     .brandRight b{
-      font-size:17px;
+      font-size:20px;
       letter-spacing:.2px;
       font-weight:800;
       color:var(--text);
@@ -102,11 +104,43 @@
     }
     .carousel img.is-active{opacity:1;}
 
+    /* Minimal arrows */
+    .carArrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      border:1px solid var(--ctrlBorder);
+      background:var(--ctrlBg);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      user-select:none;
+      line-height:1;
+      font-size:18px;
+      padding:0;
+    }
+    .carArrow.left{ left:10px; }
+    .carArrow.right{ right:10px; }
+
+    .carArrow:active{ opacity:.9; }
+
+    /* better on touch */
+    @media (hover:hover){
+      .carArrow{ opacity:.9; }
+      .carArrow:hover{ opacity:1; }
+    }
+
     .content{padding:18px;}
 
+    /* Title updated + -1px size */
     h1{
       margin:0 0 8px;
-      font-size:22px;
+      font-size:21px; /* was 22px */
       letter-spacing:.15px;
       font-weight:800;
       line-height:1.2;
@@ -195,12 +229,15 @@
           <img src="hero.jpg" alt="Lumaterra concrete and glass block lamp" class="is-active" />
           <img src="hero2.jpg" alt="Lumaterra lamp photo 2" />
           <img src="hero3.jpg" alt="Lumaterra lamp photo 3" />
+
+          <button class="carArrow left" type="button" aria-label="Previous image" id="carPrev">‹</button>
+          <button class="carArrow right" type="button" aria-label="Next image" id="carNext">›</button>
         </div>
       </div>
 
       <div class="card">
         <div class="content">
-          <h1>Concrete &amp; Glass Lamp</h1>
+          <h1>Concrete &amp; Glass Block Lamp</h1>
           <p class="sub">Minimal form, warm glow. Handmade.</p>
 
           <div class="badges">
@@ -237,7 +274,6 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Auto-advance carousel every 3 seconds
     (function () {
       const root = document.getElementById("carousel");
       if (!root) return;
@@ -245,12 +281,30 @@
       const slides = Array.from(root.querySelectorAll("img"));
       if (slides.length <= 1) return;
 
+      const prevBtn = document.getElementById("carPrev");
+      const nextBtn = document.getElementById("carNext");
+
       let idx = 0;
-      setInterval(() => {
+      let timer = null;
+
+      function show(nextIdx) {
         slides[idx].classList.remove("is-active");
-        idx = (idx + 1) % slides.length;
+        idx = (nextIdx + slides.length) % slides.length;
         slides[idx].classList.add("is-active");
-      }, 3000);
+      }
+
+      function next() { show(idx + 1); }
+      function prev() { show(idx - 1); }
+
+      function resetTimer() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(next, 3000);
+      }
+
+      prevBtn?.addEventListener("click", () => { prev(); resetTimer(); });
+      nextBtn?.addEventListener("click", () => { next(); resetTimer(); });
+
+      resetTimer();
     })();
   </script>
 </body>
