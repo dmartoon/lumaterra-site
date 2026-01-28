@@ -49,9 +49,22 @@
       padding:28px 18px 120px;
     }
 
-    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px;}
-    .brand{display:flex; flex-direction:column; line-height:1.1}
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:16px;
+    }
+    .brand{line-height:1.1}
     .brand b{font-size:17px; letter-spacing:.2px}
+    .tagRight{
+      font-size:12px;
+      letter-spacing:.2px;
+      color:var(--muted2);
+      text-align:right;
+      white-space:nowrap;
+    }
 
     .hero{display:grid; grid-template-columns: 1.15fr .85fr; gap:16px; align-items:stretch;}
     @media (max-width:860px){ .hero{grid-template-columns:1fr;} }
@@ -64,12 +77,24 @@
       box-shadow:0 14px 40px rgba(0,0,0,.45);
     }
 
-    .media{
+    /* --- Carousel --- */
+    .carousel{
+      position:relative;
       aspect-ratio: 4/5;
       background:rgba(255,255,255,.04);
       overflow:hidden;
     }
-    .media img{width:100%; height:100%; object-fit:cover; display:block;}
+    .carousel img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:0;
+      transition: opacity 420ms ease;
+    }
+    .carousel img.is-active{opacity:1;}
 
     .content{padding:18px;}
 
@@ -153,15 +178,17 @@
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="brand">
-        <b>Lumaterra</b>
-      </div>
+      <div class="brand"><b>Lumaterra</b></div>
+      <div class="tagRight">Blocklight</div>
     </div>
 
     <div class="hero">
       <div class="card">
-        <div class="media">
-          <img src="hero.jpg" alt="Lumaterra concrete and glass block lamp" />
+        <div class="carousel" id="carousel">
+          <!-- Replace hero2.jpg / hero3.jpg with your actual filenames -->
+          <img src="hero.jpg" alt="Lumaterra concrete and glass block lamp" class="is-active" />
+          <img src="hero2.jpg" alt="Lumaterra lamp photo 2" />
+          <img src="hero3.jpg" alt="Lumaterra lamp photo 3" />
         </div>
       </div>
 
@@ -203,6 +230,22 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Auto-advance carousel every 3 seconds
+    (function () {
+      const root = document.getElementById("carousel");
+      if (!root) return;
+
+      const slides = Array.from(root.querySelectorAll("img"));
+      if (slides.length <= 1) return;
+
+      let idx = 0;
+      setInterval(() => {
+        slides[idx].classList.remove("is-active");
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add("is-active");
+      }, 3000);
+    })();
   </script>
 </body>
 </html>
