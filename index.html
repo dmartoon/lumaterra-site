@@ -43,10 +43,26 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* Desktop: vertically center the whole layout to reduce dead space.
+       Mobile stays unchanged (media query). */
+    @media (min-width: 900px){
+      body{
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+      .wrap{
+        margin:0; /* prevent auto margins fighting flex centering */
+        padding-top:22px; /* slightly tighter on desktop */
+      }
+    }
+
     .wrap{
       max-width:var(--max);
       margin:0 auto;
       padding:28px 18px 120px;
+      width:100%;
     }
 
     .topbar{
@@ -111,8 +127,8 @@
       user-select:none;
       padding:8px;
       line-height:1;
-      font-size:28px;   /* bigger */
-      font-weight:700;  /* thicker */
+      font-size:28px;
+      font-weight:700;
       text-shadow:0 6px 18px rgba(0,0,0,.55);
     }
     .carArrow.left{ left:6px; }
@@ -213,7 +229,6 @@
     <div class="hero">
       <div class="card">
         <div class="carousel" id="carousel">
-          <!-- Replace hero2.jpg / hero3.jpg with your actual filenames -->
           <img src="hero.jpg" alt="Lumaterra concrete and glass block lamp" class="is-active" />
           <img src="hero2.jpg" alt="Lumaterra lamp photo 2" />
           <img src="hero3.jpg" alt="Lumaterra lamp photo 3" />
