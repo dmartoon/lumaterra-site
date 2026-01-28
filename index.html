@@ -30,8 +30,7 @@
       --radius:18px;
       --max:980px;
 
-      /* Solid bar color behind CTA */
-      --ctaBar:#17130f; /* slightly darker than bg */
+      --ctaBar:#17130f;
     }
 
     *{box-sizing:border-box}
@@ -44,17 +43,15 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Add bottom space so the fixed CTA bar doesn't cover content */
     .wrap{
       max-width:var(--max);
       margin:0 auto;
-      padding:28px 18px 120px; /* <- space for CTA bar */
+      padding:28px 18px 120px;
     }
 
     .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px;}
     .brand{display:flex; flex-direction:column; line-height:1.1}
     .brand b{font-size:17px; letter-spacing:.2px}
-    .brand span{font-size:12px; color:var(--muted2)}
 
     .hero{display:grid; grid-template-columns: 1.15fr .85fr; gap:16px; align-items:stretch;}
     @media (max-width:860px){ .hero{grid-template-columns:1fr;} }
@@ -130,7 +127,6 @@
       box-shadow:0 8px 22px rgba(0,0,0,.28);
     }
 
-    /* Solid fixed bar behind CTA (no see-through) */
     .ctaBar{
       position:fixed;
       left:0; right:0;
@@ -159,7 +155,6 @@
     <div class="topbar">
       <div class="brand">
         <b>Lumaterra</b>
-        <span>Handmade concrete + glass block lighting</span>
       </div>
     </div>
 
@@ -195,7 +190,6 @@
     </div>
   </div>
 
-  <!-- Solid CTA bar -->
   <div class="ctaBar">
     <div class="btnWrap">
       <a class="btn"
